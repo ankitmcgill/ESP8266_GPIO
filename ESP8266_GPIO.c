@@ -98,7 +98,7 @@ void _esp8266_gpio_set_pin_function_gpio(uint8_t gpio_num)
 			break;
 
 		case 14:
-			PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTCS_U, FUNC_GPIO14);
+			PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTMS_U, FUNC_GPIO14);
 			break;
 
 		case 15:
