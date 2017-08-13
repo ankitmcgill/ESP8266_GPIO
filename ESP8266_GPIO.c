@@ -29,8 +29,9 @@ void ESP8266_GPIO_Set_Direction(uint8_t gpio_num, uint8_t direction)
 	//SET THE DIRECTION (INPUT / OUTPUT) OF THE SPECIFIED GPIO PIN
 	//DIRECTION = 0 = INPUT
 	//DIRECTION = 1 = OUTPUT
-	//NOTE : THE PIN FUNCTIONS NEEDS TO BE SET TO GFENERAL GPIO BY THE USER
-	//PROGRAM. THIS LIBRARY WOULD NOT DO THAT !
+
+	//SET THE SPECIFIED PIN MODE AS GPIO
+	_esp8266_gpio_set_pin_function_gpio(gpio_num);
 
 	if(direction == 0)
 	{
@@ -56,4 +57,52 @@ uint8_t ESP8266_GPIO_Get_Value(uint8_t gpio_num)
 	//RETURN THE VALUE OF GPIO SET AS INPUT
 
 	return GPIO_INPUT_GET(gpio_num);
+}
+
+void _esp8266_gpio_set_pin_function_gpio(uint8_t gpio_num)
+{
+	//SET THE SPECIFIED PIN TO GPIO FUNCTIONS
+
+	switch(gpio_num)
+	{
+		case 0:
+			PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO0_U, FUNC_GPIO0);
+			break;
+
+		case 1:
+			PIN_FUNC_SELECT(PERIPHS_IO_MUX_U0TXD_U, FUNC_GPIO1);
+			break;
+
+		case 2:
+			PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO2_U, FUNC_GPIO2);
+			break;
+
+		case 3:
+			PIN_FUNC_SELECT(PERIPHS_IO_MUX_U0RXD_U, FUNC_GPIO3);
+			break;
+
+		case 4:
+			PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO4_U, FUNC_GPIO4);
+			break;
+
+		case 5:
+			PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO5_U, FUNC_GPIO5);
+			break;
+
+		case 12:
+			PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTDI_U, FUNC_GPIO12);
+			break;
+
+		case 13:
+			PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTCK_U, FUNC_GPIO13);
+			break;
+
+		case 14:
+			PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTCS_U, FUNC_GPIO14);
+			break;
+
+		case 15:
+			PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTDO_U, FUNC_GPIO15);
+			break;
+	}
 }

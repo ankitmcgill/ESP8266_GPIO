@@ -22,8 +22,11 @@
 #include <gpio.h>
 
 void ESP8266_GPIO_Sys_Delay_Us(uint32_t micro_sec);
+
 void ESP8266_GPIO_Set_Direction(uint8_t gpio_num, uint8_t direction);
 void ESP8266_GPIO_Set_Value(uint8_t gpio_num, uint8_t val);
 uint8_t ESP8266_GPIO_Get_Value(uint8_t gpio_num);
 
+//INTERNAL FUNCTIONS
+void _esp8266_gpio_set_pin_function_gpio(uint8_t gpio_num);
 #endif
