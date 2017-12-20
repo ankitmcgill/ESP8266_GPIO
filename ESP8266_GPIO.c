@@ -24,21 +24,19 @@ void ESP8266_GPIO_Sys_Delay_Us(uint32_t micro_sec)
 	os_delay_us(micro_sec);
 }
 
-void ESP8266_GPIO_Set_Direction(uint8_t gpio_num, uint8_t direction)
+void ESP8266_GPIO_Set_Direction(uint8_t gpio_num, esp8266_gpio_pin_direction_t direction)
 {
 	//SET THE DIRECTION (INPUT / OUTPUT) OF THE SPECIFIED GPIO PIN
-	//DIRECTION = 0 = INPUT
-	//DIRECTION = 1 = OUTPUT
 
 	//SET THE SPECIFIED PIN MODE AS GPIO
 	_esp8266_gpio_set_pin_function_gpio(gpio_num);
 
-	if(direction == 0)
+	if(direction == PIN_DIRECTION_INPUT)
 	{
 		//INPUT
 		GPIO_DIS_OUTPUT(gpio_num);
 	}
-	else
+	else if(direction == PIN_DIRECTION_OUTPUT)
 	{
 		//OUTPUT + SET VALUE TO 0
 		ESP8266_GPIO_Set_Value(gpio_num, 0);
@@ -57,6 +55,20 @@ uint8_t ESP8266_GPIO_Get_Value(uint8_t gpio_num)
 	//RETURN THE VALUE OF GPIO SET AS INPUT
 
 	return GPIO_INPUT_GET(gpio_num);
+}
+
+void ESP8266_GPIO_Set_Pullup(uint8_t gpio_num)
+{
+	//ENABLE PULL UP ON THE SPECIFIED PIN
+
+	//PIN_PULLUP_EN(gpio_num);
+}
+
+void ESP8266_GPIO_Remove_Pullup(uint8_t gpio_num)
+{
+	//DISABLE PULL UP ON THE SPECIFIED PIN
+
+	//PIN_PULLUP_DIS(gpio_num);
 }
 
 void _esp8266_gpio_set_pin_function_gpio(uint8_t gpio_num)
