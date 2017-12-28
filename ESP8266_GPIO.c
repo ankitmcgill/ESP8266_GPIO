@@ -61,14 +61,104 @@ void ESP8266_GPIO_Set_Pullup(uint8_t gpio_num)
 {
 	//ENABLE PULL UP ON THE SPECIFIED PIN
 
-	PIN_PULLUP_EN(gpio_num);
+	switch(gpio_num)
+	{
+		case 0:
+			PIN_PULLUP_EN(PERIPHS_IO_MUX_GPIO0_U);
+			break;
+
+		case 1:
+			PIN_PULLUP_EN(PERIPHS_IO_MUX_U0TXD_U);
+			break;
+
+		case 2:
+			PIN_PULLUP_EN(PERIPHS_IO_MUX_GPIO2_U);
+			break;
+
+		case 3:
+			PIN_PULLUP_EN(PERIPHS_IO_MUX_U0RXD_U);
+			break;
+
+		case 4:
+			PIN_PULLUP_EN(PERIPHS_IO_MUX_GPIO4_U);
+			break;
+
+		case 5:
+			PIN_PULLUP_EN(PERIPHS_IO_MUX_GPIO5_U);
+			break;
+
+		case 12:
+			PIN_PULLUP_EN(PERIPHS_IO_MUX_MTDI_U);
+			break;
+
+		case 13:
+			PIN_PULLUP_EN(PERIPHS_IO_MUX_MTCK_U);
+			break;
+
+		case 14:
+			PIN_PULLUP_EN(PERIPHS_IO_MUX_MTMS_U);
+			break;
+
+		case 15:
+			PIN_PULLUP_EN(PERIPHS_IO_MUX_MTDO_U);
+			break;
+		
+		case 16:
+			//PIN 16 AS GPIO NOT SUPPORTED
+			break;
+	}
 }
 
 void ESP8266_GPIO_Remove_Pullup(uint8_t gpio_num)
 {
 	//DISABLE PULL UP ON THE SPECIFIED PIN
 
-	PIN_PULLUP_DIS(gpio_num);
+	switch(gpio_num)
+	{
+		case 0:
+			PIN_PULLUP_DIS(PERIPHS_IO_MUX_GPIO0_U);
+			break;
+
+		case 1:
+			PIN_PULLUP_DIS(PERIPHS_IO_MUX_U0TXD_U);
+			break;
+
+		case 2:
+			PIN_PULLUP_DIS(PERIPHS_IO_MUX_GPIO2_U);
+			break;
+
+		case 3:
+			PIN_PULLUP_DIS(PERIPHS_IO_MUX_U0RXD_U);
+			break;
+
+		case 4:
+			PIN_PULLUP_DIS(PERIPHS_IO_MUX_GPIO4_U);
+			break;
+
+		case 5:
+			PIN_PULLUP_DIS(PERIPHS_IO_MUX_GPIO5_U);
+			break;
+
+		case 12:
+			PIN_PULLUP_DIS(PERIPHS_IO_MUX_MTDI_U);
+			break;
+
+		case 13:
+			PIN_PULLUP_DIS(PERIPHS_IO_MUX_MTCK_U);
+			break;
+
+		case 14:
+			PIN_PULLUP_DIS(PERIPHS_IO_MUX_MTMS_U);
+			break;
+
+		case 15:
+			PIN_PULLUP_DIS(PERIPHS_IO_MUX_MTDO_U);
+			break;
+		
+		case 16:
+			//PIN 16 AS GPIO NOT SUPPORTED
+			break;
+	}
 }
 
 void _esp8266_gpio_set_pin_function_gpio(uint8_t gpio_num)
