@@ -61,14 +61,14 @@ void ESP8266_GPIO_Set_Pullup(uint8_t gpio_num)
 {
 	//ENABLE PULL UP ON THE SPECIFIED PIN
 
-	//PIN_PULLUP_EN(gpio_num);
+	PIN_PULLUP_EN(gpio_num);
 }
 
 void ESP8266_GPIO_Remove_Pullup(uint8_t gpio_num)
 {
 	//DISABLE PULL UP ON THE SPECIFIED PIN
 
-	//PIN_PULLUP_DIS(gpio_num);
+	PIN_PULLUP_DIS(gpio_num);
 }
 
 void _esp8266_gpio_set_pin_function_gpio(uint8_t gpio_num)
@@ -115,6 +115,10 @@ void _esp8266_gpio_set_pin_function_gpio(uint8_t gpio_num)
 
 		case 15:
 			PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTDO_U, FUNC_GPIO15);
+			break;
+		
+		case 16:
+			//PIN 16 AS GPIO NOT SUPPORTED
 			break;
 	}
 }
